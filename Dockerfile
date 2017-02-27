@@ -14,5 +14,5 @@ RUN adduser -h /project -S nodejs && \
 
 USER nodejs
 
-ENTRYPOINT ["npm", "start", "-s", "--"]
+CMD ["npm", "start", "-s", "--"]
 
