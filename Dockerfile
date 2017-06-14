@@ -6,7 +6,7 @@ WORKDIR /project
 ENV PATH /project/node_modules/.bin:$PATH
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh tzdata
+    apk add --no-cache bash git openssh tzdata openssl
 
 RUN adduser -h /project -S nodejs && \
     addgroup -S nodejs && \
