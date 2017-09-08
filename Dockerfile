@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:6
+FROM mhart/alpine-node:8
 
 WORKDIR /project
 
@@ -6,13 +6,11 @@ WORKDIR /project
 ENV PATH /project/node_modules/.bin:$PATH
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache bash git openssh tzdata openssl
+    apk add --no-cache bash git openssh tzdata openssl su-exec
 
 RUN adduser -h /project -S nodejs && \
     addgroup -S nodejs && \
     addgroup nodejs nodejs
 
-USER nodejs
-
-CMD ["npm", "start", "-s", "--"]
+CMD ["su-exec", "nodejs", "npm", "start", "-s", "--"]
 
